@@ -3,6 +3,7 @@ public class Main {
 
         var l1 = new Livro("The Witcher", "Não sei", 230);
         var l2 = new Livro("Harry Potter", "Não sei", 334);
+        var l3 = new Livro("Código limpo", "Não sei",323);
         var livraraia = new Livraria();
 
         livraraia.inserirLivro(l1);
