@@ -47,9 +47,6 @@ public class Livro {
 
     // methods
     public void exibirDetalhes() {
-        System.out.println("*******************************");
-        System.out.println("Detalhes do livro:");
-        System.out.println();
         System.out.println("Titulo: " + this.titulo);
         System.out.println("Autor: " + this.autor);
         System.out.println("Numero de páginas: " + this.numeroPaginas);
@@ -58,7 +55,6 @@ public class Livro {
         } else {
             System.out.println("Indisponível");
         }
-        System.out.println("*******************************");
     }
 
     public void reservar() {
