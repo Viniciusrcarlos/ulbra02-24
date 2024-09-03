@@ -7,7 +7,6 @@ public class Main {
         vetorClientes.adicionarCliente(c1);
         vetorClientes.adicionarCliente(c2);
 
-        vetorClientes.buscarClientePorNome("Vinicius");
 
     }
 }
