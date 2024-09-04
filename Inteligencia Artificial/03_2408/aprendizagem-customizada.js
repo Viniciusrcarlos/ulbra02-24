@@ -70,7 +70,7 @@ const treinamento = [
     { entrada: [1, 1, 1], resultadoEsperado: 1}, // Doce
 ]
 
-neuronio = new Neuronio(3);
+neuronio = new neuronio(3);
 neuronio.treinarRede(treinamento);
 
 let resultado = neuronio.processar([0, 0, 0]);
