@@ -141,7 +141,6 @@ let treinamento = [
     }
 ];
 
-
 class RedeNeural {
     constructor(tamanhoEntrada, tamanhoOculto, tamanhoSaida) {
         this.tamanhoEntrada = tamanhoEntrada;
@@ -153,7 +152,6 @@ class RedeNeural {
         this.pesosOcultoSaida = this.inicializarPesos(tamanhoOculto, tamanhoSaida);
     }
 
-    // Função para inicializar os pesos com valores aleatórios
     inicializarPesos(linhas, colunas) {
         let pesos = [];
         for (let i = 0; i < linhas; i++) {
@@ -166,7 +164,6 @@ class RedeNeural {
         return pesos;
     }
 
-    // Função sigmóide e sua derivada
     sigmoide(x) {
         return 1 / (1 + Math.exp(-x));
     }
@@ -175,7 +172,6 @@ class RedeNeural {
         return x * (1 - x);
     }
 
-    // Feedforward: Propagação das entradas através da rede
     feedforward(entrada) {
         this.entrada = entrada;
 
@@ -188,30 +184,25 @@ class RedeNeural {
         return this.saidaFinal;
     }
 
-    // Backpropagation: Ajuste dos pesos com base no erro
     treinar(entrada, saidaEsperada, taxaAprendizagem) {
         this.feedforward(entrada);
 
-        // Calculando o erro da camada de saída
         let erroSaida = [];
         for (let i = 0; i < saidaEsperada.length; i++) {
             erroSaida.push(saidaEsperada[i] - this.saidaFinal[i]);
         }
 
-        // Calculando os ajustes para os pesos da camada de saída
         let ajustesSaida = [];
         for (let i = 0; i < erroSaida.length; i++) {
             ajustesSaida.push(erroSaida[i] * this.derivadaSigmoide(this.saidaFinal[i]));
         }
 
-        // Ajuste dos pesos da camada oculta para a camada de saída
         for (let i = 0; i < this.pesosOcultoSaida.length; i++) {
             for (let j = 0; j < this.pesosOcultoSaida[i].length; j++) {
                 this.pesosOcultoSaida[i][j] += taxaAprendizagem * ajustesSaida[j] * this.saidaOculta[i];
             }
         }
 
-        // Calculando o erro da camada oculta
         let erroOculto = [];
         for (let i = 0; i < this.pesosOcultoSaida.length; i++) {
             let erro = 0;
@@ -221,13 +212,11 @@ class RedeNeural {
             erroOculto.push(erro);
         }
 
-        // Calculando os ajustes para os pesos da camada de entrada para a camada oculta
         let ajustesOculto = [];
         for (let i = 0; i < erroOculto.length; i++) {
             ajustesOculto.push(erroOculto[i] * this.derivadaSigmoide(this.saidaOculta[i]));
         }
 
-        // Ajuste dos pesos da camada de entrada para a camada oculta
         for (let i = 0; i < this.pesosEntradaOculto.length; i++) {
             for (let j = 0; j < this.pesosEntradaOculto[i].length; j++) {
                 this.pesosEntradaOculto[i][j] += taxaAprendizagem * ajustesOculto[j] * entrada[i];
@@ -235,7 +224,6 @@ class RedeNeural {
         }
     }
 
-    // Função auxiliar para multiplicar matrizes
     multiplicarMatriz(vetor, matriz) {
         let resultado = [];
         for (let j = 0; j < matriz[0].length; j++) {
@@ -249,26 +237,46 @@ class RedeNeural {
     }
 }
 
-
-let rede = new RedeNeural(38, 96, 10);
-
-// Dados de treinamento: entradas e saídas esperadas
-let treinamentoAntigo = [
-    { entrada: [0, 0, 0], saida: [0] },
-    { entrada: [0, 0, 1], saida: [0] },
-    { entrada: [0, 1, 0], saida: [0] },
-    { entrada: [0, 1, 1], saida: [0] },
-    { entrada: [1, 0, 0], saida: [1] },
-    { entrada: [1, 0, 1], saida: [1] },
-    { entrada: [1, 1, 0], saida: [1] },
-    { entrada: [1, 1, 1], saida: [1] }
-];
+// Ajuste a rede para ter 48 entradas, já que a matriz 8x6 tem 48 valores
+let rede = new RedeNeural(48, 96, 10);
 
 // Treinando a rede
-for (let i = 0; i < 10000; i++) {  // 10.000 iterações de treinamento
+for (let i = 0; i < 1000; i++) {
     for (let dados of treinamento) {
-        rede.treinar(dados.entrada.flat(), dados.resultadoEsperado, 0.1);
+        rede.treinar(dados.entrada.flat(), dados.resultadoEsperado, 0.1); // Use .flat() para achatar a matriz 8x6 em um vetor de 48 elementos
     }
 }
 
-console.log("Rede treinada com sucesso!")
+let numeroParaTestar = [
+    [1,1,1,1,1,0],
+    [0,0,0,0,0,1],
+    [0,0,0,0,1,0],
+    [0,0,1,1,1,0],
+    [0,0,0,0,0,1],
+    [0,0,0,0,0,1],
+    [0,0,0,0,0,1],
+    [1,1,1,1,1,0]
+]
+
+// Achatar a entrada
+let entradaTeste = numeroParaTestar.flat();
+
+// Executar o feedforward com a entrada de teste
+let resultado = rede.feedforward(entradaTeste);
+
+console.log("Resultado bruto da rede:", resultado);
+
+// Arredondar os valores para 0 ou 1
+let resultadoArredondado = resultado.map(valor => valor >= 0.5 ? 1 : 0);
+
+console.log("Resultado após arredondar:", resultadoArredondado);
+
+// Encontrar o índice do valor 1 (ou o índice com o maior valor)
+let indice = resultadoArredondado.indexOf(1);
+
+// Se não houver um valor exato de 1, encontrar o índice do valor mais próximo de 1
+if (indice === -1) {
+    indice = resultado.indexOf(Math.max(...resultado));
+}
+
+console.log("A rede identificou o número:", indice);
