@@ -147,7 +147,7 @@ class RedeNeural {
         this.tamanhoOculto = tamanhoOculto;
         this.tamanhoSaida = tamanhoSaida;
 
-        // Inicializando pesos aleatórios para a camada oculta e a camada de saída
+
         this.pesosEntradaOculto = this.inicializarPesos(tamanhoEntrada, tamanhoOculto);
         this.pesosOcultoSaida = this.inicializarPesos(tamanhoOculto, tamanhoSaida);
     }
@@ -157,7 +157,7 @@ class RedeNeural {
         for (let i = 0; i < linhas; i++) {
             let linhaPesos = [];
             for (let j = 0; j < colunas; j++) {
-                linhaPesos.push(Math.random() * 2 - 1); // valores entre -1 e 1
+                linhaPesos.push(Math.random() * 2 - 1);
             }
             pesos.push(linhaPesos);
         }
@@ -175,14 +175,12 @@ class RedeNeural {
     feedforward(entrada) {
         this.entrada = entrada;
 
-        // Camada oculta
         this.saidaOculta = this.multiplicarMatriz(entrada, this.pesosEntradaOculto).map(this.sigmoide);
 
-        // Camada de saída
         this.saidaFinal = this.multiplicarMatriz(this.saidaOculta, this.pesosOcultoSaida).map(this.sigmoide);
 
         return this.saidaFinal;
-    }
+    } 
 
     treinar(entrada, saidaEsperada, taxaAprendizagem) {
         this.feedforward(entrada);
@@ -237,13 +235,13 @@ class RedeNeural {
     }
 }
 
-// Ajuste a rede para ter 48 entradas, já que a matriz 8x6 tem 48 valores
+
 let rede = new RedeNeural(48, 96, 10);
 
-// Treinando a rede
-for (let i = 0; i < 1000; i++) {
+
+for (let i = 0; i < 500; i++) {
     for (let dados of treinamento) {
-        rede.treinar(dados.entrada.flat(), dados.resultadoEsperado, 0.1); // Use .flat() para achatar a matriz 8x6 em um vetor de 48 elementos
+        rede.treinar(dados.entrada.flat(), dados.resultadoEsperado, 0.1);
     }
 }
 
@@ -258,10 +256,9 @@ let numeroParaTestar = [
     [1,1,1,1,1,0]
 ]
 
-// Achatar a entrada
+
 let entradaTeste = numeroParaTestar.flat();
 
-// Executar o feedforward com a entrada de teste
 let resultado = rede.feedforward(entradaTeste);
 
 console.log("Resultado bruto da rede:", resultado);
@@ -271,12 +268,14 @@ let resultadoArredondado = resultado.map(valor => valor >= 0.5 ? 1 : 0);
 
 console.log("Resultado após arredondar:", resultadoArredondado);
 
-// Encontrar o índice do valor 1 (ou o índice com o maior valor)
-let indice = resultadoArredondado.indexOf(1);
+// Encontrar o índice do valor 1 ou o índice do valor mais próximo de 1
+let indice = resultadoArredondado.indexOf(1) !== -1
+    ? resultadoArredondado.indexOf(1)
+    : resultado.indexOf(Math.max(...resultado));
 
-// Se não houver um valor exato de 1, encontrar o índice do valor mais próximo de 1
-if (indice === -1) {
-    indice = resultado.indexOf(Math.max(...resultado));
+// Verificar se o índice foi encontrado
+if (indice !== -1) {
+    console.log("A rede identificou o número:", indice);
+} else {
+    console.log("Nenhum valor adequado encontrado.");
 }
-
-console.log("A rede identificou o número:", indice);

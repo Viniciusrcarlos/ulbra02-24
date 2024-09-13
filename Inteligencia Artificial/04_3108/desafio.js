@@ -271,4 +271,5 @@ for (let i = 0; i < 10000; i++) {  // 10.000 iterações de treinamento
     }
 }
 
+
 console.log("Rede treinada com sucesso!")
