@@ -37,7 +37,6 @@ public class Matriz {
         }
     }
 
-    // Nesse caso, vou remover o elemento original e alterar o valor para 0
     public void removerElemento(int linha, int coluna) {
         if (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas) {
             matriz[linha][coluna] = 0;
@@ -55,7 +54,6 @@ public class Matriz {
         }
     }
 
-    // Ordenar por linhas usando Bubble Sort (iterativo)
     public void ordenarPorLinhas() {
         for (int i = 0; i < linhas; i++) {
             bubbleSort(matriz[i]);
@@ -64,14 +62,13 @@ public class Matriz {
         exibirMatriz();
     }
 
-    // Ordenar por colunas
     public void ordenarPorColunas() {
         for (int j = 0; j < colunas; j++) {
             int[] coluna = new int[linhas];
             for (int i = 0; i < linhas; i++) {
                 coluna[i] = matriz[i][j];
             }
-            bubbleSort(coluna); // Ordenação por Bubble Sort
+            bubbleSort(coluna);
             for (int i = 0; i < linhas; i++) {
                 matriz[i][j] = coluna[i];
             }
@@ -80,22 +77,18 @@ public class Matriz {
         exibirMatriz();
     }
 
-    // Ordenar a matriz como um vetor e reconstruí-la
     public void ordenarMatrizCompleta() {
         int[] vetor = new int[linhas * colunas];
         int index = 0;
 
-        // Convertendo a matriz para um vetor
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
                 vetor[index++] = matriz[i][j];
             }
         }
 
-        // Ordenar o vetor usando Merge Sort (recursivo)
         vetor = mergeSort(vetor);
 
-        // Reconstruir a matriz com os valores ordenados
         index = 0;
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
@@ -107,7 +100,6 @@ public class Matriz {
         exibirMatriz();
     }
 
-    // Função de ordenação Bubble Sort (iterativo)
     private void bubbleSort(int[] array) {
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
@@ -122,7 +114,6 @@ public class Matriz {
         }
     }
 
-    // Função de ordenação Merge Sort (recursivo)
     private int[] mergeSort(int[] array) {
         if (array.length <= 1) {
             return array;
@@ -135,7 +126,6 @@ public class Matriz {
         return merge(mergeSort(esquerda), mergeSort(direita));
     }
 
-    // Função auxiliar do Merge Sort para combinar dois arrays
     private int[] merge(int[] esquerda, int[] direita) {
         int[] resultado = new int[esquerda.length + direita.length];
         int i = 0, j = 0, k = 0;
