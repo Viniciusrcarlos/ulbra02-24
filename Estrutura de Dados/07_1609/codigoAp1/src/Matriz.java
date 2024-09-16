@@ -33,7 +33,7 @@ public class Matriz {
         if (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas) {
             matriz[linha][coluna] = valor;
         } else {
-            System.out.println("Posição inválida!");
+            System.out.println("Posicao invalida");
         }
     }
 
@@ -55,99 +55,111 @@ public class Matriz {
         }
     }
 
+    // Ordenar por linhas usando Bubble Sort (iterativo)
     public void ordenarPorLinhas() {
         for (int i = 0; i < linhas; i++) {
             bubbleSort(matriz[i]);
         }
+        System.out.println("Matriz ordenada por linhas:");
+        exibirMatriz();
     }
 
-    // Bubble Sort para ordenar cada coluna
+    // Ordenar por colunas
     public void ordenarPorColunas() {
         for (int j = 0; j < colunas; j++) {
             int[] coluna = new int[linhas];
             for (int i = 0; i < linhas; i++) {
                 coluna[i] = matriz[i][j];
             }
-            bubbleSort(coluna);
+            bubbleSort(coluna); // Ordenação por Bubble Sort
             for (int i = 0; i < linhas; i++) {
                 matriz[i][j] = coluna[i];
             }
         }
+        System.out.println("Matriz ordenada por colunas:");
+        exibirMatriz();
     }
 
-    // Merge Sort (recursivo) para ordenar toda a matriz
+    // Ordenar a matriz como um vetor e reconstruí-la
     public void ordenarMatrizCompleta() {
-        int[] elementos = new int[linhas * colunas];
+        int[] vetor = new int[linhas * colunas];
         int index = 0;
+
+        // Convertendo a matriz para um vetor
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
-                elementos[index++] = matriz[i][j];
+                vetor[index++] = matriz[i][j];
             }
         }
 
-        elementos = mergeSort(elementos);
+        // Ordenar o vetor usando Merge Sort (recursivo)
+        vetor = mergeSort(vetor);
 
+        // Reconstruir a matriz com os valores ordenados
         index = 0;
         for (int i = 0; i < linhas; i++) {
             for (int j = 0; j < colunas; j++) {
-                matriz[i][j] = elementos[index++];
+                matriz[i][j] = vetor[index++];
             }
         }
+
+        System.out.println("Matriz ordenada completamente:");
+        exibirMatriz();
     }
 
-    // Algoritmo de Bubble Sort
-    private void bubbleSort(int[] arr) {
-        boolean swapped;
-        for (int i = 0; i < arr.length - 1; i++) {
-            swapped = false;
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // Swap
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    swapped = true;
+    // Função de ordenação Bubble Sort (iterativo)
+    private void bubbleSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    // Troca
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
-            if (!swapped) break;
         }
     }
 
-    // Algoritmo de Merge Sort (recursivo)
-    private int[] mergeSort(int[] arr) {
-        if (arr.length <= 1) return arr;
+    // Função de ordenação Merge Sort (recursivo)
+    private int[] mergeSort(int[] array) {
+        if (array.length <= 1) {
+            return array;
+        }
 
-        int mid = arr.length / 2;
-        int[] left = Arrays.copyOfRange(arr, 0, mid);
-        int[] right = Arrays.copyOfRange(arr, mid, arr.length);
+        int meio = array.length / 2;
+        int[] esquerda = Arrays.copyOfRange(array, 0, meio);
+        int[] direita = Arrays.copyOfRange(array, meio, array.length);
 
-        left = mergeSort(left);
-        right = mergeSort(right);
-
-        return merge(left, right);
+        return merge(mergeSort(esquerda), mergeSort(direita));
     }
 
-    private int[] merge(int[] left, int[] right) {
-        int[] result = new int[left.length + right.length];
+    // Função auxiliar do Merge Sort para combinar dois arrays
+    private int[] merge(int[] esquerda, int[] direita) {
+        int[] resultado = new int[esquerda.length + direita.length];
         int i = 0, j = 0, k = 0;
 
-        while (i < left.length && j < right.length) {
-            if (left[i] <= right[j]) {
-                result[k++] = left[i++];
+        while (i < esquerda.length && j < direita.length) {
+            if (esquerda[i] <= direita[j]) {
+                resultado[k++] = esquerda[i++];
             } else {
-                result[k++] = right[j++];
+                resultado[k++] = direita[j++];
             }
         }
 
-        while (i < left.length) {
-            result[k++] = left[i++];
+        while (i < esquerda.length) {
+            resultado[k++] = esquerda[i++];
         }
 
-        while (j < right.length) {
-            result[k++] = right[j++];
+        while (j < direita.length) {
+            resultado[k++] = direita[j++];
         }
 
-        return result;
+        return resultado;
     }
+
+
+
 
 }
