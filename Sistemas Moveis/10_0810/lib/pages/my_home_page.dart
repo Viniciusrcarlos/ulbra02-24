@@ -41,22 +41,28 @@ class _MyHomePage extends State<MyHomePage> {
               ),
               toolbarHeight: 70,
               backgroundColor: _appBarColor,
-              title: Text(
-                widget.title,
-                style: const TextStyle(color: Colors.black),
+              title: Padding(
+                padding: const EdgeInsets.only(),
+                child: Text(
+                  widget.title,
+                  style: const TextStyle(color: Colors.black),
+                ),
               ),
               actions: [
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _changeColorAppBar();
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.color_lens_outlined,
-                      size: 32,
-                      color: Colors.black,
-                    ))
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _changeColorAppBar();
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.color_lens_outlined,
+                        size: 32,
+                        color: Colors.black,
+                      )),
+                )
               ],
             ),
             body: Languages(filter: _filter,),
