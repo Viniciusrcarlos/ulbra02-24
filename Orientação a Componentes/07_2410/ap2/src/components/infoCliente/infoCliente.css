@@ -1,0 +1,19 @@
+h1{
+    margin: 5vh;
+    text-align: left;
+}
+
+.localizacao{
+    margin-left: 2vh;
+    display: flex;
+    float: left;
+}
+
+.sec1, .sec2{
+    padding-right: 40vh;
+    font-size: 30px;
+}
+
+p {
+    display: flex;
+}
