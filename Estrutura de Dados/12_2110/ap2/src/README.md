@@ -8,7 +8,7 @@ meu jeito, no meu tempo e quando eu quero.
 
 Eu sei, pareceu um tanto grosso e egoista,
 porém, como estou fazendo uma quantidade boa 
-de cadeiras esse e tenho mais meu trabalho,
+de cadeiras e tenho mais o meu trabalho,
 não é todo dia que consigo focar nessa cadeira, 
 e infelizmente as vezes não tenho ânimo ou
 energia para sentar e fazer então prefiri fazer sozinho.
