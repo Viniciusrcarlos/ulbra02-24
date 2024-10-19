@@ -11,11 +11,11 @@ porém, como estou fazendo uma quantidade boa
 de cadeiras e tenho mais o meu trabalho,
 não é todo dia que consigo focar nessa cadeira, 
 e infelizmente as vezes não tenho ânimo ou
-energia para sentar e fazer então prefiri fazer sozinho.
+energia para sentar e fazer, então prefiri fazer sozinho.
 
 Minha ideia inicial era fazer uma interface gráfica usando
 Swing ou JavaFX, porém acabei não tendo tempo suficienete 
-para me dedicar quando gostaria.
+para me dedicar o quanto eu gostaria.
 
 Confesso que foi alguns dias fazendo e refazendo,
 assistindo suas aulas, buscando mais aulas no youtube,
