@@ -1,17 +1,17 @@
 import Header from "./components/header/Header"
 import InfoCliente from "./components/infoCliente/InfoCliente"
 import useFetch from "../src/hooks/useFetch"
+import FormsConvidado from "./components/formsConvidado/FormsConvidado"
 
 function App() {
 
-  const [data] = useFetch(`https://viacep.com.br/ws/90810-240/json/`)
+  const [data] = useFetch(`https://viacep.com.br/ws/90810240/json/`)
 
   return (
     <div>
-      <Header />
-      <div style={{display: "flex", flexDirection: "column"}}>
-        <InfoCliente nome={"Vinicius"} cep={data.cep} cidade={data.localidade} bairro={data.bairro} rua={data.logradouro}/>
-      </div>
+      {/* <Header />
+      <InfoCliente nome={"Vinicius"} cep={data.cep} cidade={data.localidade} bairro={data.bairro} rua={data.logradouro}/> */}
+      <FormsConvidado />
     </div>
   )
 }

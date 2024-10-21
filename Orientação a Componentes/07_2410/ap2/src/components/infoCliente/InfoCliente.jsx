@@ -3,14 +3,14 @@ import '../infoCliente/infoCliente.css'
 
 function InfoCliente({nome, cep, cidade, bairro, rua, hora}) {
     return (
-        <div>
+        <div className='infoCliente'>
             <h1>Seja bem vindo, {nome}</h1>
 
             <div className="localizacao">
                 <div className="sec1">
                     <p>CEP: {cep}</p>
                     <p>BAIRRO: {bairro}</p>
-                    <p>HORARIO: <Clock/> </p>
+                    <p className='hora'>HORARIO:<Clock/> </p>
                 </div>
                 <div className="sec2">
                     <p>CIDADE: {cidade}</p>

@@ -1,4 +1,27 @@
-h1{
+.infoCliente{
+    text-align: center;
+    padding: 2vh;
+}
+
+.localizacao{
+    padding: 5vh;
+    position: absolute;
+    background-color: antiquewhite;
+    display: flex;
+    text-align: left;
+    font-size: 20px;
+}
+
+.sec1 {
+    width: 50vh;
+}
+
+.hora {
+    display: flex;
+}
+
+
+/* h1{
     margin: 5vh;
     text-align: left;
 }
@@ -16,4 +39,4 @@ h1{
 
 p {
     display: flex;
-}
+} */
