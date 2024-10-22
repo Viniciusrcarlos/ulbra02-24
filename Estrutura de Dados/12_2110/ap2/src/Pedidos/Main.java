@@ -9,13 +9,13 @@ public class Main {
         int opcao;
 
         do {
-            System.out.println("\n1. Adicionar Novo Pedido");
-            System.out.println("2. Atender Pedido");
-            System.out.println("3. Cancelar Pedido");
-            System.out.println("4. Restaurar Pedido Cancelado");
-            System.out.println("5. Imprimir Pedidos Pendentes");
-            System.out.println("6. Imprimir Pedidos Cancelados");
-            System.out.println("0. Sair");
+            System.out.println("\n1 - Adicionar Novo Pedido");
+            System.out.println("2 - Atender Pedido");
+            System.out.println("3 - Cancelar Pedido");
+            System.out.println("4 - Restaurar Pedido Cancelado");
+            System.out.println("5 - Imprimir Pedidos Pendentes");
+            System.out.println("6 - Imprimir Pedidos Cancelados");
+            System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
