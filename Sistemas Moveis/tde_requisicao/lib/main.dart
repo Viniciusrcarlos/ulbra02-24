@@ -35,8 +35,12 @@ class _MyAppState extends State<MyApp> {
           future: service.getCharacters(),
           initialData: ["Buscando personagens"],
           builder: (context, snapshot) {
-            if(snapshot.hasData) {
-              return ListView.separated(itemBuilder: (context, index) { ListTile(title: snapshot.data![index,) }, separatorBuilder: (context, int) {return Divider();}, itemCount: snapshot.data!.length);
+            if (snapshot.hasData) {
+              return ListView.separated(itemBuilder: (context, index) {
+                ListTile(title: snapshot.data![index)
+              }, separatorBuilder: (context, int) {
+                return Divider();
+              }, itemCount: snapshot.data!.length);
             }
           },
         ),

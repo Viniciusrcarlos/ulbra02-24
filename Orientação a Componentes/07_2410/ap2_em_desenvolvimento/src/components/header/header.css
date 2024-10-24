@@ -1,0 +1,21 @@
+header {
+    background-color: #202020;
+    color: white;
+    height: 8vh;
+    display: flex;
+}
+
+header img{
+    margin-left: 2vh;
+}
+
+header p{
+    margin-top: 1.5vh;
+    margin-right: 45%;
+    font-size: 30px;
+}
+
+img {
+    padding: 1vh;
+    border-radius: 50px;
+}

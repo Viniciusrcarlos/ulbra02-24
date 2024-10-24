@@ -1,38 +1,73 @@
-import Clock from '../../hooks/Clock'
 import '../infoCliente/infoCliente.css'
+import React from 'react'
+import {ButtonCustom} from "../buttons/ButtonCustom.jsx";
+import {Card, ListGroup} from "react-bootstrap";
 
-function InfoCliente({nome, cep, cidade, bairro, rua, hora}) {
+
+export const InfoCliente = () => {
+    const [dropState, setDropState] = React.useState(false)
+    const [json, setJson] = React.useState({
+        nome: '',
+        cep: '',
+        bairro: '',
+        cidade: '',
+        rua: ''
+    })
+
+    React.useEffect(() => {
+        getJson()
+
+    }, [])
+
+    const getJson = async () => {
+
+        const response = await fetch('https://viacep.com.br/ws/95555000/json/')
+        const data = await response.json()
+        console.log(data)
+        setJson(data)
+    }
+
+    const handleClick = () => {
+        console.log('click')
+        setDropState(!dropState)
+        if (dropState) {
+            getJson()
+        }
+    }
+
+    const style = {
+        card: {
+            backgroundColor: 'white',
+            borderRadius: '10px',
+            padding: '10px',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+            width: '300px',
+            alignSelf: 'start',
+        }
+    }
+
     return (
-        <div className='infoCliente'>
-            <h1>Seja bem vindo, {nome}</h1>
+        <div className='infoCliente' >
+            <h1>Seja bem vindo, {json.nome ? json.nome : "..."}</h1>
+            <ButtonCustom onClick={handleClick} text='Ver localização'/>
+            {dropState &&
+                <div className="localizacao" style={style.card}>
+                    <Card style={style.card}>
+                        <Card.Body>
 
-            <div className="localizacao">
-                <div className="sec1">
-                    <p>CEP: {cep}</p>
-                    <p>BAIRRO: {bairro}</p>
-                    <p className='hora'>HORARIO:<Clock/> </p>
+                            <Card.Text>
+                                <ListGroup>
+                                    <ListGroup.Item>CEP: {json.cep}</ListGroup.Item>
+                                    <ListGroup.Item>Bairro: {json.bairro ? json.bairro : "..."}</ListGroup.Item>
+                                    <ListGroup.Item>Cidade: {json.localidade}</ListGroup.Item>
+                                    <ListGroup.Item>Rua: {json.rua ? json.rua : "..."}</ListGroup.Item>
+                                </ListGroup>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
                 </div>
-                <div className="sec2">
-                    <p>CIDADE: {cidade}</p>
-                    <p>RUA: {rua}</p>
-                </div>
-            </div>
-
-
-
-            {/* <div className="localizacao">
-                <ul>
-                    <li>CEP: {cep}</li>
-                    <li>Bairro: {bairro}</li>
-                    <li>Horario: {hora}</li>
-                </ul>
-                <ul>
-                    <li>Cidade: {cidade}</li>
-                    <li>Rua: {rua}</li>
-                </ul>
-            </div> */}
+            }
         </div>
     )
 }
 
-export default InfoCliente
