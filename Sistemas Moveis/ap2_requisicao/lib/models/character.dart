@@ -1,12 +1,12 @@
 class Character {
   final String name;
-  final String image;
+  final String img;
 
 
-  const Character({required this.name, required this.image});
+  const Character({required this.name, required this.img});
 
   factory Character.fromJson(Map<String, dynamic> json){
-    return Character(name: json["name"], image: json["image"]);
+    return Character(name: json["name"], img: json["img"]);
   }
 
 }

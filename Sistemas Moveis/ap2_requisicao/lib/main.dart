@@ -22,10 +22,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    futureCharacters = getCharacters();
+    futureCharacters = getCharactersForApi();
   }
 
-  Future<List<Character>> getCharacters() async {
+  Future<List<Character>> getCharactersForApi() async {
     characters = await service.getCharacters();
     filteredCharacters = characters;
     return characters;
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                     onChanged: (value) {
                       filterCharacters(value);
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), labelText: "Filtro"),
                   ),
                 ),
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                                 return ListTile(
                                   title: Text(filteredCharacters[index].name),
                                   leading:
-                                      Image.network(filteredCharacters[index].image),
+                                      Image.network(filteredCharacters[index].img),
                                 );
                               },
                               separatorBuilder: (context, int) {
@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                         );
                       }
                       if (snapshot.hasError) {
-                        return const Text("Erro ao buscar characters");
+                        return const Text("Erro ao buscar characters aaa");
                       }
 
                       return const Center(child: CircularProgressIndicator());

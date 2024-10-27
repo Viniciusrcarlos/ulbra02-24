@@ -1,1 +1,1 @@
-const BASE_URL = "https://rickandmortyapi.com/api";
+const BASE_URL = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master";
