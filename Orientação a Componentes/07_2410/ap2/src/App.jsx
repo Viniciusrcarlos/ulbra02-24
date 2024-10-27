@@ -25,13 +25,15 @@ function App() {
     return (
         <div>
             <Header />
-            <InfoCliente />
+            <InfoCliente name={"Vini"} />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <CustomGrid>
-                    {lista.map((item) => (
-                        <CustomCard key={item.id} userInfo={item} /> // Aqui, estamos passando userInfo corretamente
-                    ))}
-                </CustomGrid>
+                {lista.length > 0 &&
+                    <CustomGrid>
+                        {lista.map((item) => (
+                            <CustomCard key={item.id} userInfo={item} /> // Aqui, estamos passando userInfo corretamente
+                        ))}
+                    </CustomGrid>
+                }
                 <FormsConvidado func={addUser} />
             </div>
         </div>

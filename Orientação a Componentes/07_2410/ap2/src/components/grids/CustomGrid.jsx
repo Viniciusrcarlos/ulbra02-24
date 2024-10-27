@@ -1,4 +1,4 @@
-import { Grid2} from "@mui/material";
+import { Grid2 } from "@mui/material";
 
 export const CustomGrid = ({children}) => {
     const style = {
@@ -7,7 +7,7 @@ export const CustomGrid = ({children}) => {
             borderRadius: '10px',
             padding: '10px',
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-            width: '50vh',
+            width: '140vh',
             alignSelf: 'start',
         },
     }

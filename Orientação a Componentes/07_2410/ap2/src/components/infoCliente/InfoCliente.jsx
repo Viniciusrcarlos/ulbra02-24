@@ -4,7 +4,7 @@ import {ButtonCustom} from "../buttons/ButtonCustom.jsx";
 import {Card, ListGroup} from "react-bootstrap";
 
 
-export const InfoCliente = () => {
+export const InfoCliente = ({name}) => {
     const [dropState, setDropState] = React.useState(false)
     const [json, setJson] = React.useState({
         nome: '',
@@ -21,7 +21,7 @@ export const InfoCliente = () => {
 
     const getJson = async () => {
 
-        const response = await fetch('https://viacep.com.br/ws/95555000/json/')
+        const response = await fetch('https://viacep.com.br/ws/90810-240/json/')
         const data = await response.json()
         console.log(data)
         setJson(data)
@@ -48,7 +48,7 @@ export const InfoCliente = () => {
 
     return (
         <div className='infoCliente' >
-            <h1>Seja bem vindo, {json.nome ? json.nome : "..."}</h1>
+            <h1>Seja bem vindo, {name}</h1>
             <ButtonCustom onClick={handleClick} text='Ver localização'/>
             {dropState &&
                 <div className="localizacao" style={style.card}>
@@ -60,7 +60,7 @@ export const InfoCliente = () => {
                                     <ListGroup.Item>CEP: {json.cep}</ListGroup.Item>
                                     <ListGroup.Item>Bairro: {json.bairro ? json.bairro : "..."}</ListGroup.Item>
                                     <ListGroup.Item>Cidade: {json.localidade}</ListGroup.Item>
-                                    <ListGroup.Item>Rua: {json.rua ? json.rua : "..."}</ListGroup.Item>
+                                    <ListGroup.Item>Rua: {json.logradouro ? json.logradouro : "..."}</ListGroup.Item>
                                 </ListGroup>
                             </Card.Text>
                         </Card.Body>
