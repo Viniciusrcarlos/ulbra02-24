@@ -10,7 +10,7 @@ class CharacterService {
     final response = await http.get(Uri.parse('$BASE_URL/character'));
 
     if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body)['result'];
+      List jsonResponse = json.decode(response.body)['results'];
       return jsonResponse.map((item) => Character.fromJson(item)).toList();
     } else {
       throw Exception("Erro ao buscar os personagens.");

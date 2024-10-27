@@ -15,12 +15,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   CharacterService service = CharacterService();
-  late Future<List<Character>> personages;
+  late Future<List<Character>> personagens_future;
+
+  late List<Character> personagens;
+  late List<Character> personagensFiltrados;
 
   @override
   void initState() {
     super.initState();
-    personages = service.getCharacters();
+    personagens_future = service.getCharacters();
   }
 
   @override
@@ -35,23 +38,28 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       body: FutureBuilder<List<Character>>(
-        future: personages,
+        future: personagens_future,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView.separated(
-                itemBuilder: (context, index) {
-                  return ListTile(title: Text(snapshot.data![index].name), leading: Image.network(snapshot.data![index].image),);
-                },
-                separatorBuilder: (context, int) {
-                  return Divider();
-                },
-                itemCount: snapshot.data!.length);
+            return Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(snapshot.data![index].name),
+                      leading: Image.network(snapshot.data![index].image),
+                    );
+                  },
+                  separatorBuilder: (context, int) {
+                    return Divider();
+                  },
+                  itemCount: snapshot.data!.length),
+            );
           }
           if (snapshot.hasError) {
             return Text("Erro ao buscar characters");
           }
 
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         },
       ),
     ));
