@@ -15,52 +15,81 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   CharacterService service = CharacterService();
-  late Future<List<Character>> personagens_future;
-
-  late List<Character> personagens;
-  late List<Character> personagensFiltrados;
+  late Future<List<Character>> futureCharacters;
+  late List<Character> characters;
+  late List<Character> filteredCharacters;
 
   @override
   void initState() {
     super.initState();
-    personagens_future = service.getCharacters();
+    futureCharacters = getCharacters();
+  }
+
+  Future<List<Character>> getCharacters() async {
+    characters = await service.getCharacters();
+    filteredCharacters = characters;
+    return characters;
+  }
+
+  filterCharacters(String filter) {
+    setState(() {
+      filteredCharacters = characters
+          .where(
+              (item) => item.name.toLowerCase().contains(filter.toLowerCase()))
+          .toList();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text(
-          "Consumo de uma API",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: FutureBuilder<List<Character>>(
-        future: personagens_future,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Expanded(
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index].name),
-                      leading: Image.network(snapshot.data![index].image),
-                    );
-                  },
-                  separatorBuilder: (context, int) {
-                    return Divider();
-                  },
-                  itemCount: snapshot.data!.length),
-            );
-          }
-          if (snapshot.hasError) {
-            return Text("Erro ao buscar characters");
-          }
+              appBar: AppBar(
+                backgroundColor: Colors.deepPurple,
+                title: const Text(
+                  "Consumo de uma API",
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+            body: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    onChanged: (value) {
+                      filterCharacters(value);
+                    },
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), labelText: "Filtro"),
+                  ),
+                ),
+                  FutureBuilder<List<Character>>(
+                    future: futureCharacters,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Expanded(
+                          child: ListView.separated(
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text(filteredCharacters[index].name),
+                                  leading:
+                                      Image.network(filteredCharacters[index].image),
+                                );
+                              },
+                              separatorBuilder: (context, int) {
+                                return const Divider();
+                              },
+                              itemCount: filteredCharacters.length),
+                        );
+                      }
+                      if (snapshot.hasError) {
+                        return const Text("Erro ao buscar characters");
+                      }
 
-          return Center(child: CircularProgressIndicator());
-        },
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  ),
+        ],
       ),
     ));
   }
