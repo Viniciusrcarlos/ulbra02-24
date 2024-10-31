@@ -1,1 +1,1 @@
-const BASE_URL = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0";
