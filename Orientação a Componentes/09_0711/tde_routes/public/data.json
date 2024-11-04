@@ -1,0 +1,14 @@
+[
+    {
+      "nome": "João",
+      "sobrenome": "Silva",
+      "telefone": "123456789",
+      "cidade": "São Paulo"
+    },
+    {
+      "nome": "Maria",
+      "sobrenome": "Oliveira",
+      "telefone": "987654321",
+      "cidade": "Rio de Janeiro"
+    }
+]
