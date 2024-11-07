@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Header from "../components/header/Header"
-import ContatoPage from "../pages/ContatoPage"
+import ContatoPage from "../pages/ContatoPage/ContatoPage.jsx"
 import ErrorPage from "../pages/ErrorPage"
 import HomePage from "../pages/HomePage"
 import SobrePage from "../pages/SobrePage"

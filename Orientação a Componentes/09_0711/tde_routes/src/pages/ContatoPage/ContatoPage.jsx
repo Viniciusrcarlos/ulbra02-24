@@ -1,10 +1,12 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
+import './ContatoPage.css';
+import {data} from "../../../data.js";
 
 function ContatoPage() {
-  // Array local para armazenar os dados dos formulários
-  const [data, setData] = useState([]);
-  
-  // Estado para os valores dos campos do formulário
+  const [pessoa, setPessoa] = useState(data);
+
+
   const [formValues, setFormValues] = useState({
     nome: "",
     sobrenome: "",
@@ -12,20 +14,19 @@ function ContatoPage() {
     cidade: ""
   });
 
-  // Função para atualizar os valores do formulário conforme o usuário digita
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  // Função para enviar o formulário
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // Evita o reload da página
-    
-    // Adiciona os dados do formulário ao array local
-    setData([...data, formValues]);
-    
-    // Limpa os campos do formulário após o envio
+    e.preventDefault();
+
+    data.push(formValues);
+    setPessoa([...data]);
+
     setFormValues({
       nome: "",
       sobrenome: "",
@@ -35,53 +36,53 @@ function ContatoPage() {
   };
 
   return (
-    <div>
+    <div className="ContatoPage">
       <h2>Formulário de Contato</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nome:</label>
+      <form className="forms" onSubmit={handleSubmit}>
+        <div className="formsRow">
           <input
+              placeholder="Nome"
             type="text"
             name="nome"
             value={formValues.nome}
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label>Sobrenome:</label>
+        <div className="formsRow">
           <input
+              placeholder="Sobrenome"
             type="text"
             name="sobrenome"
             value={formValues.sobrenome}
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label>Telefone:</label>
+        <div className="formsRow">
           <input
+              placeholder="Telefone"
             type="text"
             name="telefone"
             value={formValues.telefone}
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label>Cidade:</label>
+        <div className="formsRow">
           <input
+              placeholder="Cidade"
             type="text"
             name="cidade"
             value={formValues.cidade}
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Adicionar</button>
+        <button className="buttonSubmit" type="submit">Adicionar</button>
       </form>
 
       <h3>Lista de Contatos</h3>
       <ul>
-        {data.map((item, index) => (
+        {pessoa.map((item, index) => (
           <li key={index}>
-            {item.nome} {item.sobrenome}, {item.telefone} - {item.cidade}
+            {item.nome} {item.sobrenome}, {item.telefone} , {item.cidade}
           </li>
         ))}
       </ul>

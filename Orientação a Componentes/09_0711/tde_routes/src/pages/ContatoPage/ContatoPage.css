@@ -1,0 +1,33 @@
+.ContatoPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 10vh;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2vh;
+}
+
+.formsRow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1vh;
+}
+
+.buttonSubmit{
+    margin-top: 2vh;
+}
+
+label{
+
+}
+
