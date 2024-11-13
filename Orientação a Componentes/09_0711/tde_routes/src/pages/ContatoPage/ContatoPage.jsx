@@ -37,7 +37,7 @@ function ContatoPage() {
 
   return (
     <div className="ContatoPage">
-      <h2>Formulário de Contato</h2>
+      <h1>Formulário de Contato</h1>
       <form className="forms" onSubmit={handleSubmit}>
         <div className="formsRow">
           <input
