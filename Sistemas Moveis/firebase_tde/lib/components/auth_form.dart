@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
+enum AuthMode { Signup, Login }
+
 class AuthForm extends StatelessWidget {
-  const AuthForm({super.key});
+  final _passwordController  = TextEditingController();
+  AuthMode _authMode = AuthMode.Login;
+  Map<String, String> _authData = {
+    'email': '',
+    'senha': '',
+  };
+
+  void _submit() {}
 
   @override
   Widget build(BuildContext context) {
@@ -14,28 +23,53 @@ class AuthForm extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         height: 320,
-        width: deviceSize.width * 0.75 ,
+        width: deviceSize.width * 0.75,
         child: Form(
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "E-mail",
                 ),
                 keyboardType: TextInputType.emailAddress,
+                onSaved: (email) => _authData['email'] = email ?? '',
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Senha",
                 ),
                 keyboardType: TextInputType.emailAddress,
                 obscureText: true,
+                controller: _passwordController ,
+                onSaved: (password) => _authData['password'] = password ?? '',
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Confirmar senha",
+              if (_authMode == AuthMode.Signup)
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: "Confirmar senha",
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (_password) {
+                    final password = _password ?? '';
+                  },
                 ),
-                keyboardType: TextInputType.emailAddress,
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: _submit,
+                child:
+                    Text(_authMode == AuthMode.Login ? "Entrar" : "Registrar"),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                    30,
+                  )),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 30,
+                  ),
+                ),
               ),
             ],
           ),
