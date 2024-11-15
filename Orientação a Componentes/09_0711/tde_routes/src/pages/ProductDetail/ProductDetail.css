@@ -1,0 +1,84 @@
+.product-detail-card {
+    height: 70vh;
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3vh auto;
+    padding: 2vh;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 35vh;
+    height: 35vh;
+    max-width: 400px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #009688;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.menu-button, .back-button, .next-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:hover, .back-button:hover, .next-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.menu-button:active, .back-button:active, .next-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.menu-button {
+    background-color: #28A745;
+}
+
+.menu-button:hover {
+    background-color: #218838;
+}

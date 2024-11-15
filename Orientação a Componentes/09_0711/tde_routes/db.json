@@ -146,43 +146,6 @@
       "price": 219.99,
       "description": "Descrição do Produto 21",
       "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "22",
-      "name": "Produto 22",
-      "price": 229.99,
-      "description": "Descrição do Produto 22",
-      "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "23",
-      "name": "Produto 23",
-      "price": 239.99,
-      "description": "Descrição do Produto 23",
-      "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "24",
-      "name": "Produto 24",
-      "price": 249.99,
-      "description": "Descrição do Produto 24",
-      "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "25",
-      "name": "Produto 25",
-      "price": 259.99,
-      "description": "Descrição do Produto 25",
-      "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "c53e",
-      "name": "Um novo produto",
-      "price": 100,
-      "description": "Descrição do novo produto",
-      "photo_url": "https://picsum.photos/200"
     }
   ]
- }
- 
- 
+}
