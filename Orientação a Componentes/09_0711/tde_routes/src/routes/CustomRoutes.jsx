@@ -4,7 +4,7 @@ import ContatoPage from "../pages/ContatoPage/ContatoPage.jsx"
 import ErrorPage from "../pages/ErrorPage"
 import HomePage from "../pages/HomePage"
 import SobrePage from "../pages/SobrePage"
-import ProdutosPage from "../pages/ProdutosPage"
+import ProductPage from "../pages/ProductPage/ProductPage.jsx"
 
 function CustomRoutes() {
     return (
@@ -15,7 +15,7 @@ function CustomRoutes() {
                 <Route path='/' element={<HomePage />}/>
                 <Route path='/contato' element={<ContatoPage />}/>
                 <Route path='/sobre' element={<SobrePage />}/>
-                <Route path='/produtos' element={<ProdutosPage/>}/>
+                <Route path='/produtos' element={<ProductPage/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
                 </Routes>
             </BrowserRouter>
