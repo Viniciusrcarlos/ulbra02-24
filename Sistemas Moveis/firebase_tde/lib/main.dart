@@ -1,27 +1,47 @@
-import 'package:firebase_tde/pages/auth_page.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_tde/screens/home_screen.dart';
+import 'package:firebase_tde/screens/login_screen.dart';
+import 'package:firebase_tde/screens/register_screen.dart';
+import 'package:firebase_tde/services/auth_service.dart';
+import 'package:flutter/material.dart';
+
 import 'firebase_options.dart';
 
-
-
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+  bool isAuthenticated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isAuthenticated = authService.user != null;
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AuthPage(),
+      title: 'Flutter Demo',
+      initialRoute: isAuthenticated ? "/home" : "/",
+      routes: {
+        "/": (context) => LoginScreen(authService: authService),
+        "/register": (context) => RegisterScreen(authService: authService),
+        "/home": (context) => HomeScreen(authService: authService)
+      },
     );
   }
 }
