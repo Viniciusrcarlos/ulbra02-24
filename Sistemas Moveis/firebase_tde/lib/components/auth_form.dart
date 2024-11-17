@@ -10,6 +10,8 @@ class AuthForm extends StatelessWidget {
     'senha': '',
   };
 
+  AuthForm({super.key});
+
   void _submit() {}
 
   @override
@@ -33,6 +35,13 @@ class AuthForm extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (email) => _authData['email'] = email ?? '',
+                validator: (_email) {
+                  final email = _email ?? '';
+                  if (email.trim().isEmpty || !email.contains('@')) {
+                    return 'Informe um email valido';
+                  }
+                  return null;
+                },
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -42,6 +51,13 @@ class AuthForm extends StatelessWidget {
                 obscureText: true,
                 controller: _passwordController ,
                 onSaved: (password) => _authData['password'] = password ?? '',
+                validator: (_password) {
+                  final password = _password ?? '';
+                  if (password.isEmpty || password.length < 5) {
+                    return 'Informe uma senha válida.';
+                  }
+                  return null;
+                },
               ),
               if (_authMode == AuthMode.Signup)
                 TextFormField(
@@ -51,6 +67,10 @@ class AuthForm extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   validator: (_password) {
                     final password = _password ?? '';
+                    if (password != _passwordController) {
+                      return 'Senhas informadas não conferem';
+                    }
+                    return null;
                   },
                 ),
               SizedBox(

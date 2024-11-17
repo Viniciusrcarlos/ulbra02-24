@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "890504698408",
+    "project_id": "tde-firebase-login",
+    "storage_bucket": "tde-firebase-login.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890504698408:android:f040d9b455501908a9f31d",
+        "android_client_info": {
+          "package_name": "com.example.login_firebase_tde"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuwUBSMjCWSvyv2PkkRyokmtz_hFGHkbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
