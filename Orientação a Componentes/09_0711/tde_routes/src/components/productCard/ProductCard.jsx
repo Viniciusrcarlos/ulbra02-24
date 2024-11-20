@@ -1,14 +1,14 @@
 import './ProductCard.css';
 import {useNavigate} from "react-router-dom";
 
-function ProductCard({name, price, description, urlImg, id}) {
+function ProductCard({name, price, description, urlImg, id, refreshProducts}) {
     const navigate = useNavigate()
 
     async function deleteProduct(productId) {
         await fetch(`http://localhost:3001/products/${productId}`,{
             method: 'DELETE'
         })
-
+        refreshProducts();
         navigate(`/produto`);
     }
 

@@ -31,6 +31,7 @@ function ProductPage() {
                     description={product.description}
                     urlImg={product.photo_url}
                     id={product.id}
+                    refreshProducts={getAllProducts}
                 />
             ))}
         </div>

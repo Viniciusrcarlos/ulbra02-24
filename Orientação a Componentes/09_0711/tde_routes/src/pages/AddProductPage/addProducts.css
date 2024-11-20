@@ -1,0 +1,112 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+    width: 60vh;
+    margin: 5vh auto;
+    padding: 3vh;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form input {
+    padding: 2vh;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form button {
+    padding: 2vh;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+form button:active {
+    background-color: #004085;
+    transform: scale(0.95);
+}
+
+form input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.url-input-container {
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+}
+
+.url-input-container input {
+    flex: 1;
+    padding: 2vh;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.url-input-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.url-input-container button {
+    padding: 2vh 2vh;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.url-input-container button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.url-input-container button:active {
+    background-color: #004085;
+    transform: scale(0.95);
+}
+
+.image-preview {
+    margin-top: 1vh;
+    text-align: center;
+}
+
+.image-preview img {
+    width: 40vh;
+    height: 23vh;
+    max-width: 100%;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

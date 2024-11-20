@@ -8,6 +8,7 @@ function ProductDetail() {
     const params = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState({});
+    const [totalProducts, setTotalProducts] = useState(0); // Novo estado para total de produtos
 
     async function getProduct() {
         try {
@@ -19,9 +20,23 @@ function ProductDetail() {
         }
     }
 
+    async function getTotalProducts() {
+        try {
+            const response = await fetch(`http://localhost:3001/products`);
+            const productsResponse = await response.json();
+            setTotalProducts(productsResponse.length);
+        } catch (error) {
+            console.error("Erro ao buscar produtos:", error);
+        }
+    }
+
     useEffect(() => {
         getProduct();
+        getTotalProducts();
     }, [params.id]);
+
+    const isFirstProduct = Number(params.id) === 1;
+    const isLastProduct = Number(params.id) === totalProducts;
 
     return (
         <div className="product-detail-card">
@@ -35,12 +50,14 @@ function ProductDetail() {
                 <button
                     className="back-button"
                     onClick={() => navigate(`/produto/${params.id <= 1 ? params.id : params.id - 1}`)}
+                    disabled={isFirstProduct} // Desabilita o botão "Voltar" no primeiro item
                 >
                     <FontAwesomeIcon icon={faArrowLeft} className="icon"/>
                 </button>
                 <button
                     className="next-button"
                     onClick={() => navigate(`/produto/${Number(params.id) + 1}`)}
+                    disabled={isLastProduct}
                 >
                     <FontAwesomeIcon icon={faArrowRight} className="icon" />
                 </button>

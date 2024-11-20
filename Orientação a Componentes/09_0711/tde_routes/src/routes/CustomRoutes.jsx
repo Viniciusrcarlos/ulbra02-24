@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import AddProducts from "../pages/ContatoPage/addProducts.jsx"
+import AddProducts from "../pages/AddProductPage/addProducts.jsx"
 import ErrorPage from "../pages/ErrorPage"
 import HomePage from "../pages/HomePage"
 import SobrePage from "../pages/SobrePage"
