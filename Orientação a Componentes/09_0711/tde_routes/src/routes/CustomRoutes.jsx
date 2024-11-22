@@ -7,6 +7,7 @@ import ProductPage from "../pages/ProductPage/ProductPage.jsx"
 import MainLayout from "../layout/MainLayout.jsx";
 import ProductLayout from "../layout/ProductLayout.jsx";
 import ProductDetail from "../pages/ProductDetail/ProductDetail.jsx";
+import EditProduct from "../pages/EditProduct/EditProduct.jsx";
 
 function CustomRoutes() {
     return (
@@ -23,6 +24,7 @@ function CustomRoutes() {
                     <Route path='/produto' element={<ProductLayout/>}>
                         <Route index path='/produto' element={<ProductPage />} />
                         <Route path='/produto/:id' element={<ProductDetail />} />
+                        <Route path='/produto/editar' element={<EditProduct />} />
                         <Route path='*' element={<ErrorPage/>}/>
                     </Route>
                 </Routes>

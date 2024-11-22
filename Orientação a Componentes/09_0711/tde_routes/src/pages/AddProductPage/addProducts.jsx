@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import './addProducts.css';
 import { useNavigate } from "react-router-dom";
 
 function AddProducts() {
     const navigate = useNavigate();
-    const [previewUrl, setPreviewUrl] = useState(""); // Estado para a URL da pré-visualização
+    const [previewUrl, setPreviewUrl] = useState("");
+    // const [id, setId] = useState("");
+    //
+    // useEffect(() => {
+    //     getProducts();
+    // }, []);
+    //
+    // async function getProducts() {
+    //     const response = await fetch(`http://localhost:3001/products`);
+    //     setId(pro);
+    // }
+
 
     async function createProduct(product) {
         await fetch(`http://localhost:3001/products`, {
@@ -29,14 +40,15 @@ function AddProducts() {
             photo_url: formData.get("photo_url"),
         };
 
+
         createProduct(produto);
     }
 
     function handlePreview(event) {
-        event.preventDefault(); // Evita o envio do formulário
+        event.preventDefault();
         const formData = new FormData(event.target.form);
         const photoUrl = formData.get("photo_url");
-        setPreviewUrl(photoUrl); // Atualiza a URL da pré-visualização
+        setPreviewUrl(photoUrl);
     }
 
     return (

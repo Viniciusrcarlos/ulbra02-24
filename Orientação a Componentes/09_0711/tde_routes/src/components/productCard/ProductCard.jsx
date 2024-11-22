@@ -1,7 +1,7 @@
 import './ProductCard.css';
 import {useNavigate} from "react-router-dom";
 
-function ProductCard({name, price, description, urlImg, id, refreshProducts}) {
+function ProductCard({product, refreshProducts}) {
     const navigate = useNavigate()
 
     async function deleteProduct(productId) {
@@ -12,19 +12,25 @@ function ProductCard({name, price, description, urlImg, id, refreshProducts}) {
         navigate(`/produto`);
     }
 
+    function handleChange(event) {
+        navigate('/produto/editar')
+    }
+
     return (
         <div className="card">
             <div className="card-buttons">
-                <button className="edit-button">Editar</button>
+                <button className="edit-button" onClick={() => {
+                    handleChange(event);
+                }}>Editar</button>
                 <button className="delete-button" onClick={() => {
-                    deleteProduct(id);
+                    deleteProduct(product.id);
                 }}>Excluir</button>
             </div>
-            <img src={urlImg} alt=""/>
-            <h1>{name}</h1>
-            <h2>R$ {price}</h2>
+            <img src={product.photo_url} alt=""/>
+            <h1>{product.name}</h1>
+            <h2>R$ {product.price}</h2>
             <button className="detail-button" onClick={() => {
-                navigate(`/produto/${id}`)
+                navigate(`/produto/${product.id}`)
             }}>Detalhes</button>
         </div>
     )

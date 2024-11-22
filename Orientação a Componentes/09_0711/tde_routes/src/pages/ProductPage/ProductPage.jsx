@@ -25,14 +25,18 @@ function ProductPage() {
 
             {products.map(product => (
                 <ProductCard
-                    key={product.id}
-                    name={product.name}
-                    price={product.price}
-                    description={product.description}
-                    urlImg={product.photo_url}
-                    id={product.id}
-                    refreshProducts={getAllProducts}
+                    product={product}
+                    refreshProducts={getAllProducts  }
                 />
+                // <ProductCard
+                //     key={product.id}
+                //     name={product.name}
+                //     price={product.price}
+                //     description={product.description}
+                //     urlImg={product.photo_url}
+                //     id={product.id}
+                //     refreshProducts={getAllProducts}
+                // />
             ))}
         </div>
     );

@@ -7,36 +7,44 @@ import './ProductDetail.css';
 function ProductDetail() {
     const params = useParams();
     const navigate = useNavigate();
-    const [product, setProduct] = useState({});
-    const [totalProducts, setTotalProducts] = useState(0); // Novo estado para total de produtos
+    const [product , setProduct] = useState({});
+    const [produtos, setProdutos] = useState([]);
+    const [index, setIndex] = useState(0);
 
-    async function getProduct() {
+    async function getAllProduct() {
         try {
-            const response = await fetch(`http://localhost:3001/products/${params.id}`);
+            const response = await fetch(`http://localhost:3001/products`);
             const productResponse = await response.json();
-            setProduct(productResponse);
+            setProdutos(productResponse);
+
+            const produtoFiltrado = productResponse.find(item => item.id === params.id)
+            const actualIndex = productResponse.findIndex(item => item.id === params.id)
+
+            setIndex(actualIndex)
+            setProduct(produtoFiltrado)
+
         } catch (error) {
             console.error("Erro ao buscar produto:", error);
         }
     }
 
-    async function getTotalProducts() {
-        try {
-            const response = await fetch(`http://localhost:3001/products`);
-            const productsResponse = await response.json();
-            setTotalProducts(productsResponse.length);
-        } catch (error) {
-            console.error("Erro ao buscar produtos:", error);
-        }
+    async function next(id) {
+        const indexActual = produtos.findIndex(item => item.id === id)
+        const response = await fetch(`http://localhost:3001/products/${produtos[indexActual + 1].id}`);
+        const productResponse = await response.json();
+        setProduct(productResponse);
+    }
+
+    async function previus(id) {
+        const indexActual = produtos.findIndex(item => item.id === id)
+        const response = await fetch(`http://localhost:3001/products/${produtos[indexActual - 1].id}`);
+        const productResponse = await response.json();
+        setProduct(productResponse);
     }
 
     useEffect(() => {
-        getProduct();
-        getTotalProducts();
+        getAllProduct();
     }, [params.id]);
-
-    const isFirstProduct = Number(params.id) === 1;
-    const isLastProduct = Number(params.id) === totalProducts;
 
     return (
         <div className="product-detail-card">
@@ -49,15 +57,13 @@ function ProductDetail() {
                 </button>
                 <button
                     className="back-button"
-                    onClick={() => navigate(`/produto/${params.id <= 1 ? params.id : params.id - 1}`)}
-                    disabled={isFirstProduct} // Desabilita o botão "Voltar" no primeiro item
+                    onClick={() => previus(product.id)}
                 >
-                    <FontAwesomeIcon icon={faArrowLeft} className="icon"/>
+                    <FontAwesomeIcon icon={faArrowLeft}   className="icon"/>
                 </button>
                 <button
                     className="next-button"
-                    onClick={() => navigate(`/produto/${Number(params.id) + 1}`)}
-                    disabled={isLastProduct}
+                    onClick={() => next(product.id)}
                 >
                     <FontAwesomeIcon icon={faArrowRight} className="icon" />
                 </button>
