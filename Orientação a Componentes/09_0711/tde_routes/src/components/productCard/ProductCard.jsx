@@ -13,8 +13,9 @@ function ProductCard({product, refreshProducts}) {
     }
 
     function handleChange(event) {
-        navigate('/produto/editar')
+        navigate('/produto/editar', {state: product});
     }
+
 
     return (
         <div className="card">

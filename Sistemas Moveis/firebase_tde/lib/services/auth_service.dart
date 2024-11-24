@@ -57,6 +57,8 @@ class AuthService {
       _setErrorCredential(true);
     } on Exception catch (e) {
       _setErrorGeneric(true);
+    } finally {
+      _setLoading(false);
     }
   }
 
@@ -68,9 +70,12 @@ class AuthService {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: emailControllerRegister.text, password: passwordControllerRegister.text);
       _resetControllers();
+      _setLoading(false);
       Navigator.pushReplacementNamed(context, "/");
     } on Exception {
       _setErrorGeneric(true);
+    } finally {
+      _setLoading(false);
     }
   }
 
@@ -84,6 +89,8 @@ class AuthService {
       Navigator.pushReplacementNamed(context, "/");
     } on Exception catch (e) {
       _setErrorGeneric(true);
+    } finally {
+      _setLoading(false);
     }
   }
 }

@@ -2,16 +2,9 @@
   "products": [
     {
       "id": "1",
-      "name": "Produto 1",
-      "price": 19.99,
+      "name": "1",
+      "price": "321",
       "description": "Descrição do Produto 1",
-      "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "2",
-      "name": "Produto 2",
-      "price": 29.99,
-      "description": "Descrição do Produto 2",
       "photo_url": "https://picsum.photos/200"
     },
     {
@@ -23,15 +16,15 @@
     },
     {
       "id": "4",
-      "name": "Produto 4",
-      "price": 49.99,
+      "name": "Produto 44",
+      "price": "50",
       "description": "Descrição do Produto 4",
       "photo_url": "https://picsum.photos/200"
     },
     {
       "id": "5",
-      "name": "Produto 5",
-      "price": 59.99,
+      "name": "Produto 55",
+      "price": "59.99",
       "description": "Descrição do Produto 5",
       "photo_url": "https://picsum.photos/200"
     },
@@ -141,11 +134,18 @@
       "photo_url": "https://picsum.photos/200"
     },
     {
-      "id": "b68a",
-      "name": "okpsopka",
-      "price": "120",
-      "description": "sokxxko",
+      "id": "397f",
+      "name": "Iphone 20",
+      "price": "95.000",
+      "description": "um iphone top",
       "photo_url": "https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=3840&q=75"
+    },
+    {
+      "id": "6a6e",
+      "name": "vini",
+      "price": "321",
+      "description": "321",
+      "photo_url": "https://picsum.photos/200"
     }
   ]
 }
