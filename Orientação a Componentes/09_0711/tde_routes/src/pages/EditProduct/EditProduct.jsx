@@ -51,7 +51,7 @@ function EditProduct () {
                     <input name="photo_url" type="url" placeholder="URL da Imagem" required defaultValue={product.photo_url} />
                     <button type="button" onClick={handlePreview}>Pré-visualizar</button>
                 </div>
-                <button type="submit">Cadastrar</button>
+                <button type="submit">Editar produto</button>
 
                 {previewUrl && (
                     <div className="image-preview">

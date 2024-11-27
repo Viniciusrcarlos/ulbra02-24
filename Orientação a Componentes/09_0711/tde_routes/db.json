@@ -10,7 +10,7 @@
     {
       "id": "3",
       "name": "Produto 3",
-      "price": 39.99,
+      "price": "39.99",
       "description": "Descrição do Produto 3",
       "photo_url": "https://picsum.photos/200"
     },
