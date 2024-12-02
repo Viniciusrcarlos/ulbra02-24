@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "111",
-      "price": "32121",
-      "description": "alterar a desc",
-      "photo_url": "https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=3840&q=75"
-    },
-    {
       "id": "3",
       "name": "Produto 3",
       "price": "39.99",
@@ -132,13 +125,6 @@
       "price": 209.99,
       "description": "Descrição do Produto 20",
       "photo_url": "https://picsum.photos/200"
-    },
-    {
-      "id": "397f",
-      "name": "Iphone 20",
-      "price": "95.000",
-      "description": "um iphone top",
-      "photo_url": "https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=3840&q=75"
     },
     {
       "id": "6a6e",
