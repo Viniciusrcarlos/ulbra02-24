@@ -1,19 +1,18 @@
 # TDE Routes - Orientação a Componentes
 
-Este repositório contém o trabalho desenvolvido para a disciplina de **Orientação a Componentes**, parte do curso na ULBRA. O projeto demonstra a utilização de rotas em um ambiente de desenvolvimento web, com foco na aplicação prática dos conceitos estudados.
+Este repositório contém o trabalho desenvolvido para a disciplina de **Orientação a Componentes**, parte do curso na ULBRA. O projeto demonstra a utilização de rotas em um ambiente de desenvolvimento web, com foco na aplicação prática dos conceitos estudados. Foi feito um CRUD em React.
 
 ## Tecnologias Utilizadas
 
 - Node.js
-- Express.js
-- [Outras tecnologias ou bibliotecas usadas no projeto, caso aplicável]
+- JSX
+- React
 
 ## Funcionalidades
 
 - Criação e gerenciamento de rotas.
 - Manipulação de dados via requisições HTTP (GET, POST, PUT, DELETE).
 - Implementação de lógica backend para processar requisições.
-- Estruturação modular do código.
 
 ## Como Executar o Projeto
 
@@ -21,4 +20,3 @@ Este repositório contém o trabalho desenvolvido para a disciplina de **Orienta
    ```bash
    git clone https://github.com/Viniciusrcarlos/ulbra02-24.git
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
