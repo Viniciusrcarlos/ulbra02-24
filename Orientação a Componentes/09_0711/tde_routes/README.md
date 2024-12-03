@@ -20,3 +20,5 @@ Este repositório contém o trabalho desenvolvido para a disciplina de **Orienta
 1. Clone este repositório:
    ```bash
    git clone https://github.com/Viniciusrcarlos/ulbra02-24.git
+
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
