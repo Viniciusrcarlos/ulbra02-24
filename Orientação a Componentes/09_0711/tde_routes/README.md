@@ -7,6 +7,7 @@ Este repositório contém o trabalho desenvolvido para a disciplina de **Orienta
 - Node.js
 - JSX
 - React
+- Vite
 
 ## Funcionalidades
 
@@ -19,4 +20,13 @@ Este repositório contém o trabalho desenvolvido para a disciplina de **Orienta
 1. Clone este repositório:
    ```bash
    git clone https://github.com/Viniciusrcarlos/ulbra02-24.git
+2. Baixe as dependências:
+   ```bach
+   npm install
+3. Inicie o projeto:
+   ```bach
+   npm run dev
+4. Inicie o servidor local:
+   ```bach
+   npm run server
 
