@@ -1,6 +1,6 @@
-# TDE Routes - Orientação a Componentes
+# Avaliação Semestral - Orientação a Componentes
 
-Este repositório contém o trabalho desenvolvido para a disciplina de **Orientação a Componentes**, parte do curso na ULBRA. O projeto demonstra a utilização de rotas em um ambiente de desenvolvimento web, com foco na aplicação prática dos conceitos estudados. Foi feito um CRUD em React.
+Durante aula, foi criado um pequeno site, onde é permitido cadastrar, ler, editar e deletar produtos. 
 
 ## Tecnologias Utilizadas
 
