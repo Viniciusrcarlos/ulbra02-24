@@ -1,32 +1,35 @@
 # Avaliação Semestral - Orientação a Componentes
 
-Durante aula, foi criado um pequeno site, onde é permitido cadastrar, ler, editar e deletar produtos. 
+Este projeto foi desenvolvido durante as aulas da disciplina **Orientação a Componentes**. O objetivo é construir um pequeno site que permita cadastrar, visualizar, editar e deletar produtos (CRUD).
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-- Node.js
-- JSX
-- React
-- Vite
+- **Node.js**: Ambiente de execução JavaScript no backend.
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **JSX**: Sintaxe para escrever componentes React de forma declarativa.
+- **Vite**: Ferramenta de build para desenvolvimento rápido de aplicações.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
 - Criação e gerenciamento de rotas.
-- Manipulação de dados via requisições HTTP (GET, POST, PUT, DELETE).
-- Implementação de lógica backend para processar requisições.
+- Manipulação de dados através de requisições HTTP (GET, POST, PUT, DELETE).
+- Interface intuitiva para gerenciar produtos.
+- Integração entre frontend e backend para comunicação fluida.
 
-## Como Executar o Projeto
+## 🚀 Como Executar o Projeto
 
-1. Clone este repositório:
+1. **Clone este repositório**:
    ```bash
    git clone https://github.com/Viniciusrcarlos/ulbra02-24.git
-2. Baixe as dependências:
-   ```bach
-   npm install
-3. Inicie o projeto:
-   ```bach
-   npm run dev
-4. Inicie o servidor local:
-   ```bach
-   npm run server
 
+2. **Baixe as dependências:**
+   ```bash
+   npm install
+
+3. **Inicie a aplicação:**
+   ```bash
+   npm run dev
+
+4. **Inicie o servidor local:**
+   ```bash
+   npm run server
