@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         double salarioJogador = 5000.0;
-        int numeroMaximoRodadas = 50;
+        int numeroMaximoRodadas = 2000;
 
         Jogo jogo = new Jogo(salarioJogador, numeroMaximoRodadas);
 
